@@ -83,6 +83,7 @@
     } else {
         echo "<h3>No one is currently registered.</h3>";
     }
+    echo "<a href=\"http://momshadalvee.azurewebsites.net/search.php\">Go to search page</a>"
 ?>
 </body>
 </html>
