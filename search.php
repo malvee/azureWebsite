@@ -1,6 +1,6 @@
 <html>
 <head>
-<Title>Registration Form</Title>
+<Title>Search</Title>
 <style type="text/css">
     body { background-color: #fff; border-top: solid 10px #000;
         color: #333; font-size: .85em; margin: 20; padding: 20;
@@ -18,7 +18,7 @@
 <body>
 <h1>Search</h1>
 <p>Just enter the name that you are looking for and click on <strong>Search</strong>.</p>
-<form method="post" action="index.php" enctype="multipart/form-data" >
+<form method="post" action="search.php" enctype="multipart/form-data" >
       Enter here<input type="text" name="name" id="name"/></br>
       <input type="submit" name="submit" value="Submit" />
 </form>
@@ -45,13 +45,7 @@ $name = "";
 
 
         $name .= $_POST['name'];
-    }
-     catch(Exception $e) {
-        die(var_dump($e));
-    }
-}
-    // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl WHERE name = '%<?php echo $name ?>%'";
+            $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%<?php echo $name ?>%'";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll(); 
     if(count($registrants) > 0) {
@@ -71,6 +65,13 @@ $name = "";
     } else {
         echo "<h3>Sorry, nothing found.</h3>";
     }
+    }
+     catch(Exception $e) {
+        die(var_dump($e));
+    }
+}
+    // Retrieve data
+
 ?>
 </body>
 </html>
