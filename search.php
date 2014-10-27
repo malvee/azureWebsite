@@ -45,9 +45,10 @@ $name = "";
 
 
         $name .= $_POST['name'];
-            $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%<?php echo $name ?>%'";
+            $sql_select = "SELECT * FROM registration_tbl WHERE name LIKE '%$name%'";
     $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll(); 
+    $registrants = $stmt->fetchAll();
+    //print_r($registrants);
     if(count($registrants) > 0) {
         echo "<h2>Search results:</h2>";
         echo "<table>";
@@ -70,7 +71,7 @@ $name = "";
         die(var_dump($e));
     }
 }
-    // Retrieve data
+    
 
 ?>
 </body>
