@@ -39,17 +39,17 @@
         die(var_dump($e));
     }
     
-
+$name = "";
  if(!empty($_POST)) {
     try {
 
 
-        $name = $_POST['name'];
+        $name .= $_POST['name'];
     }
      catch(Exception $e) {
         die(var_dump($e));
     }
-
+}
     // Retrieve data
     $sql_select = "SELECT * FROM registration_tbl WHERE name = '%<?php echo $name ?>%'";
     $stmt = $conn->query($sql_select);
